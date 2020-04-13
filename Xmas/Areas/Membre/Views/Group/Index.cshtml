@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Xmas.Areas.Membre.Models.GroupModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Mes groupes</h2>
+
+<p>
+    @Html.ActionLink("Nouveau groupe", "Create", new { controller = "Group" }, new { @class = "btn btn-default" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdGroupe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th> 
+             @Html.DisplayNameFor(model => model.NomEvenement)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (Xmas.Areas.Membre.Models.GroupModel item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdGroupe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @item.NomEvenement
+            @Html.DisplayFor(modelItem => item.NomEvenement)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.IdGroupe  }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IdGroupe }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdGroupe })
+        </td>
+    </tr>
+}
+
+</table>

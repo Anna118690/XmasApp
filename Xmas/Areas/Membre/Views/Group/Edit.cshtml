@@ -1,0 +1,47 @@
+﻿@model Xmas.Areas.Membre.Models.EditGroupModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+<div class="form-horizontal">
+    <h4>Edition Du groupe</h4>
+    <form method="post" action="~/Membre/Group/Edit">
+        <hr />
+        <div class="form-group">
+            <input type="hidden" name="IdGroupe" value="@Model.MonGroupe.IdGroupe" /><br />
+            <label class="control-label col-md-2">Nom</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" name="Nom" value="@Model.MonGroupe.Nom" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Description</label> <div class="col-md-10">
+                <input type="text" class="form-control" name="Description" value="@Model.MonGroupe.Description" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Evénement
+            </label>
+            <div class="col-md-10">
+                <select class="form-control" name="IdEvenement">
+                    @foreach (Xmas.Areas.Membre.Models.EventModel item in Model.MesEvents)
+                    {
+                        <option value="@item.IdEvenement">@item.Nom</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </form>
+</div>
+
